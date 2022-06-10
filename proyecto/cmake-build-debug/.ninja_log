@@ -1,3 +1,7 @@
 # ninja log v5
 0	503	6765233251881926	CMakeFiles/proyecto.dir/main.cpp.obj	fb6f1e46c8f5bc45
 505	816	6765233255005424	proyecto.exe	9f2c578eefc09c19
+1	508	6765930623820405	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+508	780	6765930626503177	proyecto.exe	9f2c578eefc09c19
+1	334	6765932397961548	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+335	435	6765932398938859	proyecto.exe	9f2c578eefc09c19

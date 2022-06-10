@@ -1,4 +1,4 @@
-"G:\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=G:/CLion 2022.1.1/bin/ninja/win/ninja.exe" -G Ninja -S "C:\Program Files\labo1\proyecto" -B "C:\Program Files\labo1\proyecto\cmake-build-debug"
+"G:\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=G:/CLion 2022.1.1/bin/ninja/win/ninja.exe" -G Ninja -S C:\Users\agus_\Documents\GitHub\proyecto_cerdos\proyecto -B C:\Users\agus_\Documents\GitHub\proyecto_cerdos\proyecto\cmake-build-debug
 -- The C compiler identification is GNU 11.2.0
 -- The CXX compiler identification is GNU 11.2.0
 -- Detecting C compiler ABI info
@@ -13,4 +13,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Program Files/labo1/proyecto/cmake-build-debug
+-- Build files have been written to: C:/Users/agus_/Documents/GitHub/proyecto_cerdos/proyecto/cmake-build-debug
