@@ -1,7 +1,20 @@
 # ninja log v5
-0	503	6765233251881926	CMakeFiles/proyecto.dir/main.cpp.obj	fb6f1e46c8f5bc45
-505	816	6765233255005424	proyecto.exe	9f2c578eefc09c19
-1	508	6765930623820405	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
-508	780	6765930626503177	proyecto.exe	9f2c578eefc09c19
 1	334	6765932397961548	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
 335	435	6765932398938859	proyecto.exe	9f2c578eefc09c19
+14	351	6765992401644153	CMakeFiles/proyecto.dir/interfaz.cpp.obj	63b60f083b31aea1
+2	374	6765992809468957	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+374	514	6765992810851392	proyecto.exe	aa1b4b0859459c3f
+14	331	6765995082680572	CMakeFiles/proyecto.dir/interfaz.cpp.obj	63b60f083b31aea1
+2	337	6765995082740412	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+337	435	6765995083688185	proyecto.exe	aa1b4b0859459c3f
+2	335	6765995711865666	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+335	427	6765995712772789	proyecto.exe	aa1b4b0859459c3f
+2	325	6765995898372959	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+326	421	6765995899320706	proyecto.exe	aa1b4b0859459c3f
+1	325	6765996166682510	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+326	425	6765996167641035	proyecto.exe	aa1b4b0859459c3f
+2	328	6765996299287786	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+329	420	6765996300207086	proyecto.exe	aa1b4b0859459c3f
+13	347	6765998231944661	CMakeFiles/proyecto.dir/interfaz.cpp.obj	63b60f083b31aea1
+1	347	6765998231964617	CMakeFiles/proyecto.dir/main.cpp.obj	5e53fa0e0152ec34
+347	447	6765998232932298	proyecto.exe	aa1b4b0859459c3f
