@@ -14,7 +14,7 @@ int main(){
     cout << "Jugador #2:";
     getline(cin, jugador2);
 
-    /* los 5 turnos del juego y tiradas */
+    /* sistema de turnos y lanzadas */
     int TrufasJ1 = 0, TrufasJ2 = 0;                 // contador de trufas
     string jugando;                                  // variable para el jugador del turno
     for (int i = 1; i <= 5; ++i) {                   // 5 rondas en total
