@@ -16,18 +16,17 @@ int main(){
 
     /* los 5 turnos del juego y tiradas */
     int TrufasJ1 = 0, TrufasJ2 = 0;                 // contador de trufas
+    string jugando;                                  // variable para el jugador del turno
     for (int i = 1; i <= 5; ++i) {                   // 5 rondas en total
-        char continuar;                           // char para colocar S o N
-        do {                                        // while para lanzar otra vez
-            juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugador1, i ); // turno de jugador 1
-            cout << "Continuar? (S/N)" << endl;
-            cin >> continuar;
-        } while (continuar == 's' || continuar == 'S' );    // el && para que tome s mayuscula y minuscula
-        do {
-            juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugador2, i ); // turno de jugador 2
-            cout << "Continuar? (S/N)" << endl;
-            cin >> continuar;
-        } while (continuar == 's' || continuar == 'S' );
+        jugando = jugador1;
+        for (int j = 0; j < 2; ++j) {
+            do {                                        // while para lanzar otra vez
+                juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugando, i ); // turno de jugador
+            } while (consulta());                       // inexacto para repeterir al jugador si quiere volver a lanzar dados
+         jugando = jugador2;                            // aca cambia el turno del jugador
+        }
+
+
     }
     return 0;
 }

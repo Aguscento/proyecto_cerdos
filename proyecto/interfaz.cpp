@@ -15,3 +15,15 @@ void juego(string jugador1, string jugador2, int trufasj1, int trufasj2, string 
     cout << "| lANZAMIENTOS:          |" << endl;
     cout << "+------------------------+" << endl;
 }
+
+bool consulta(){
+    char continuar;
+    do {
+    cout << "Continuar? (S/N)" << endl;
+    cin >> continuar;
+    } while ((continuar == 's' || continuar == 'S') && (continuar == 'n' || continuar == 'N'));
+    if (continuar == 's' || continuar == 'S'){
+        return true;
+    }
+    return false;
+}
