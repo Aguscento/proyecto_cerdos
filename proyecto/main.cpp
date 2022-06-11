@@ -1,5 +1,5 @@
 #include<iostream>
-#include <string>
+#include <cstring>
 #include "interfaz.h"
 using namespace std;
 
@@ -17,12 +17,17 @@ int main(){
     /* los 5 turnos del juego y tiradas */
     int TrufasJ1 = 0, TrufasJ2 = 0;                 // contador de trufas
     for (int i = 0; i < 5; ++i) {                   // 5 rondas en total
-        string continuar;                           // string para colocar S o N, se podria hacer con un char pero no se
+        char continuar;                           // char para colocar S o N
         do {
-            juego(jugador1, jugador2, TrufasJ1, TrufasJ2 );
+            juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugador1 ); // turno de jugador 1
             cout << "Continuar? (S/N)" << endl;
             cin >> continuar;
-        } while (continuar == "S");
+        } while (continuar == 's' || continuar == 'S' );
+        do {
+            juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugador2 ); // turno de jugador 2
+            cout << "Continuar? (S/N)" << endl;
+            cin >> continuar;
+        } while (continuar == 's' || continuar == 'S' );
     }
     return 0;
 }
