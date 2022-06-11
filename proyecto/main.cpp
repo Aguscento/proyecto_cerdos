@@ -8,7 +8,7 @@ int main(){
 
     /* ingreso de nombre de jugadores */
     string jugador1, jugador2;                      // solicitacion de nombre de jugadores
-    // cin.ignore();                                // para ignorar el "enter" en el ultimo ingreso
+    // cin.ignore();                                // para ignorar el "enter" en el ultimo ingreso (por ahora negado porque no hay nada arriba)
     cout << "Jugador #1:";
     getline(cin, jugador1);                  // permite agregar espacios en los nombres ej: maria isabel
     cout << "Jugador #2:";
@@ -19,11 +19,11 @@ int main(){
     string jugando;                                  // variable para el jugador del turno
     for (int i = 1; i <= 5; ++i) {                   // 5 rondas en total
         jugando = jugador1;
-        for (int j = 0; j < 2; ++j) {
+        for (int j = 0; j < 2; ++j) {                   // 2 jugadores, jugador uno seria j=0 u jugador dos seria j=1
             do {                                        // while para lanzar otra vez
                 juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugando, i ); // turno de jugador
-            } while (consulta());                       // inexacto para repeterir al jugador si quiere volver a lanzar dados
-         jugando = jugador2;                            // aca cambia el turno del jugador
+            } while (consulta());
+         jugando = jugador2;                            // aca cambia la variable string por el nombre del jugador2
         }
 
 
