@@ -1,5 +1,4 @@
 #include<iostream>
-#include <cstring>
 #include "interfaz.h"
 using namespace std;
 
