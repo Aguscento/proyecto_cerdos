@@ -14,18 +14,18 @@ int main(){
     getline(cin, jugador2);
 
     /* sistema de turnos y lanzadas */
-    int TrufasJ1 = 0, TrufasJ2 = 0;                 // contador de trufas
+    int TrufasJ1 = 0, TrufasJ2 = 0, lanzamientos;    // contador de trufas y lanzamientos
     string jugando;                                  // variable para el jugador del turno
     for (int i = 1; i <= 5; ++i) {                   // 5 rondas en total
         jugando = jugador1;
         for (int j = 0; j < 2; ++j) {                   // 2 jugadores, jugador uno seria j=0 u jugador dos seria j=1
+            lanzamientos = 0;                           // contador de lanzamientos
             do {                                        // while para lanzar otra vez
-                juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugando, i ); // turno de jugador
+                lanzamientos ++;
+                juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugando, i, lanzamientos); // turno de jugador
             } while (consulta());
          jugando = jugador2;                            // aca cambia la variable string por el nombre del jugador2
         }
-
-
     }
     return 0;
 }

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void juego(string jugador1, string jugador2, int trufasj1, int trufasj2, string turno_de, int i) {
+void juego(string jugador1, string jugador2, int trufasj1, int trufasj2, string turno_de, int i, int lanzamientos) {
     cout << endl << "GRAN CERDO" << endl;
     cout << "_________________________________________________________________________________" << endl;
     cout << jugador1 << ":" << trufasj1 << " trufas acumuladas" << "            " << jugador2 << ":" << trufasj2 << " trufas acumuladas" << endl;
@@ -11,7 +11,7 @@ void juego(string jugador1, string jugador2, int trufasj1, int trufasj2, string 
     cout << "+------------------------+" << endl;
     cout << "| RONDAS #" << i << "              |" << endl;
     cout << "| TRUFAS DE LA RONDA:    |" << endl;
-    cout << "| lANZAMIENTOS:          |" << endl;
+    cout << "| lANZAMIENTOS: " << lanzamientos << "        |" << endl;
     cout << "+------------------------+" << endl;
 }
 
