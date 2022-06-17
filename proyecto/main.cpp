@@ -96,7 +96,7 @@ int main(){
     cout <<endl<<endl;
     cout << "HITO                            "<<jugador1<<"                                  "<<jugador2<<endl;
     cout <<"---------------------------------------------------------------------------------------"<<endl;
-    cout << endl <<endl;
+    cout << endl;
     cout << "Mas trufas en total        "<<PuntosJ1<<" PDV ("<<TrufasJ1<<" Trufas)"<<"                      "<<PuntosJ2<<" PDV ("<<TrufasJ2<<" Trufas)"<<endl<<endl;
     cout << "Cada 50 trufas             "<<Cada50J1<<" PDV ("<<(Cada50J1*50)<<" Trufas)"<<"                      "<<Cada50J2<<" PDV ("<<(Cada50J2*50)<<" Trufas)"<<endl<<endl;
     cout << "Oinks                      "<<(Oink1*2)<<" ("<<Oink1<<" Oinks)"<<"                           " <<(Oink2*2)<<" ("<<Oink2<<" Oinks)"<<endl<<endl;
