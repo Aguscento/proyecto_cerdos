@@ -27,3 +27,24 @@ bool consulta(){
     }
     return false;
 }
+
+int menu_principal(){
+    int  opcion;
+    cout<< "GRAN CERDO";
+    cout<<endl;
+    cout<<"------------------------";
+    cout<<endl;
+    cout<<"1 - JUGAR"<<endl;
+    cout<<"2 - ESTADISTICAS";
+    cout<<endl;
+    cout<<"3 - CERDITOS";
+    cout<<endl;
+    cout<<"------------------------";
+    cout<<endl;
+    cout<<"0 - SALIR";
+    cout<<endl;
+    cout << "Elija opcion:";
+    cin >> opcion;
+    cout << "------------------------" << endl;
+    return opcion;
+}
