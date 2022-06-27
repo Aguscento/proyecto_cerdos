@@ -29,7 +29,7 @@ bool consulta(){
 }
 
 int menu_principal(){
-    int  opcion;
+    string opcion;
     cout<< "GRAN CERDO";
     cout<<endl;
     cout<<"------------------------";
@@ -43,8 +43,10 @@ int menu_principal(){
     cout<<endl;
     cout<<"0 - SALIR";
     cout<<endl;
-    cout << "Elija opcion:";
-    cin >> opcion;
+    do {                                                        // ciclo para volver a consultar si no se ingreso 0,1,2,3
+        cout << "Elija opcion:";
+        cin >> opcion;
+    } while (opcion != "1" && opcion != "2" && opcion != "3" && opcion != "0");  // uso tipo string porque si uso tipo int y meto una letra en la variable opcion se bugea
     cout << "------------------------" << endl;
-    return opcion;
+    return stoi(opcion);                                     // stoi pasa de string a tipo int
 }

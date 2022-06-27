@@ -21,7 +21,7 @@ int main(){
                 //---------------------------------------------------------------------
 
                 /* ingreso de nombre de jugadores */
-                cin.ignore();                                       // para ignorar el "enter" en el ultimo ingreso
+                cin.ignore();                                          // para ignorar el "enter" en el ultimo ingreso
                 cout << "Jugador #1:";
                 getline(cin, jugador1);                         // permite agregar espacios en los nombres ej: maria isabel
                 cout << "Jugador #2:";
@@ -102,7 +102,17 @@ int main(){
                 cout << "Oinks                      " << (Oink1 * 2) << " (" << Oink1 << " Oinks)"<< "                           " << (Oink2 * 2) << " (" << Oink2 << " Oinks)" << endl << endl;
                 cout << "Cerdo codicioso            " << codicia1 << " PDV (" << lanzamientosJ1 << " lanzamientos)"<< "                " << codicia2 << " PDV (" << lanzamientosJ2 << " lanzamientos)" << endl << endl;
                 cout << "---------------------------------------------------------------------------------------" << endl;
-                cout << "TOTAL                      " << total1 << " PDV                                 " << total2<< " PDV";
+                cout << "TOTAL                      " << total1 << " PDV                                 " << total2<< " PDV" << endl;
+                if (total1 == total2){
+                     cout << "EMPATE!" << endl << endl;
+                }else{
+                    if (total1 > total2){
+                        cout << "GANADOR " << jugador1 << " con " << total1 << " puntos de victoria!" << endl << endl;
+                    }else{
+                        cout << "GANADOR " << jugador2 << " con " << total2 << " puntos de victoria!" << endl << endl;
+                    }
+                }
+                cin.ignore();
                 break;
 
                 //------------------------------------------------------------------------------
