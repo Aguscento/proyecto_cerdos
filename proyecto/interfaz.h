@@ -16,5 +16,7 @@ void tirarDados(int dados[],int cantidad);
 /// define que jugador tira primero
 void definir_comienzo(int vec[], int cantidad,int vec2[],int cant, string &jugando, string jugador1, string jugador2);
 
+/// dibuja los dados
+void imprimir_dados(int dados_que_salieron[], int cant);
 
 #endif //PROYECTO_INTERFAZ_H

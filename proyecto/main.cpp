@@ -6,21 +6,26 @@ using namespace std;
 
 int main(){
     string jugador1, jugador2;                             // strings para solicitar nombres de jugadores
-    int TrufasJ1 = 0, TrufasJ2 = 0, lanzamientos;          // contador de trufas y lanzamientos
+    int TrufasJ1 = 49, TrufasJ2 = 49, lanzamientos;          // contador de trufas y lanzamientos
     int lanzamientosJ1 = 0, lanzamientosJ2 = 0;            // contador de lanzamientos
     string jugando;                                        // variable para el jugador del turno
     string continuar;                                      // string para continuar
     int trufas_acumuladas = 0;                             // trufas acumuladas en el turno
     int total1 = 0, total2 = 0;                            // acumulador de puntos totales
+    string jugador_record;                                 // variable para el jugador record
+    int cantidad_record = 0;                                   // variable para el puntaje record
     int PuntosJ1 = 0, PuntosJ2 = 0;                        // acumulador de puntos
     int Cada50J1, Cada50J2;                                // variable para guardar los puntos de cada 50 trufas
     int Oink1 = 0, Oink2 = 0;                              // contador de Oinks
     int codicia1 = 0, codicia2 = 0;                        // acumulador de puntos de codicia
     string salir = "N";                                    // variable para cerrar del juego
-    int const cantidad = 2;                                // constante para vector de dados
-    int dados[cantidad]={};
-    int dados2[cantidad]={};                               // vecrores de dados
+    int cantidad;                                          // cantidad de dados a usar
+    int const objetos = 3;                                 // constante para vector de dados
+    int dados[objetos]={};
+    int dados2[objetos]={};                                // vecrores de dados
     int resultado;                                         // donde se suman los puntos de las condiciones
+    bool cincunta_trufas = false, barro = false;           // booleanos para cambiar cantidad de dados
+    bool oink;
     srand(time(NULL));                          // seteo del rand
 
     while (salir == "N") {
@@ -43,16 +48,19 @@ int main(){
                 }
                 //---------------------------------------------------------------------
                 /* definicion de comienzo */
+                cantidad = 2;                                          // cantidad de dados a usar
                 cout << "DADOS DE JUGADOR #1:" << endl;
                 tirarDados(dados, cantidad);
                 for (int i = 0; i < 2; ++i) {
                     cout <<dados[i]<<endl;
                 }
+                imprimir_dados(dados, cantidad);
                 cout << "DADOS DE JUGADOR #2:" << endl;
                 tirarDados(dados2,cantidad);
                 for (int i = 0; i < 2; ++i) {
                     cout <<dados2[i]<<endl;
                 }
+                imprimir_dados(dados2, cantidad);
                 definir_comienzo(dados,cantidad,dados2,cantidad, jugando, jugador1, jugador2);
                 do {                                                   // while para continuar
                     cout << "Escriba S para continuar:";
@@ -63,48 +71,114 @@ int main(){
 
                 /* sistema de turnos y lanzadas */
                 for (int i = 1; i <= 5; ++i) {                                    // 5 rondas en total
-                    for (int j = 0;j < 2; ++j) {                                  // 2 jugadores, jugador uno seria j=0 u jugador dos seria j=1
+                    for (int j = 0;j < 2; ++j) {                                  // 2 jugadores
                         lanzamientos = 0;                                         // contador de lanzamientos
-                        bool continuar = true;                                    // booleno para volver a lanzar
+                        bool as = true;                                           // booleno para volver a lanzar
                         do {                                                      //do while para lanzar otra vez
+                            oink = false;                                         // reinicio de oink
                             lanzamientos++;
                             juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugando, i, lanzamientos, trufas_acumuladas); // turno de jugador
                             tirarDados(dados, cantidad);
+                            imprimir_dados(dados, cantidad);
                             for (int k = 0; k < cantidad; ++k) {
                                 cout << dados[k] << endl;
                             }
-                            if(dados[0] != dados[1] && dados[0] !=1 && dados[1]!=1){              // Si las caras son distintas entre sí y ninguna de ellas es un as
-                                trufas_acumuladas += (dados[0]+ dados[1]);
-                                resultado = (dados[0]+ dados[1]);
-                                cout<<"SUMASTE: "<<resultado<<endl;
-                            }else if(dados[0] == dados[1] && dados[0] != 1 && dados[1] != 1){      // Si las caras son iguales entre sí y no son ases. Entonces el cerdo hizo un Oink
-                                trufas_acumuladas += (dados[0] + dados[1]) * 2;
-                                resultado = (dados[0] + dados[1]) * 2;
-                                cout<<"OINK!!!"<<endl;
-                                cout<<"SUMASTE: "<<resultado<<endl;
-                                if (jugando == jugador1){
-                                    Oink1 ++;
-                                }else{
-                                    Oink2 ++;
+                            if (cantidad == 2){                                                        // caso si la cantidad de dados es 2
+                                if(dados[0] != dados[1] && dados[0] !=1 && dados[1]!=1){               // Si las caras son distintas entre sí y ninguna de ellas es un as
+                                    trufas_acumuladas += (dados[0]+ dados[1]);
+                                    resultado = (dados[0]+ dados[1]);
+                                    cout<<"SUMASTE: "<<resultado<<endl;
+                                }else if(dados[0] == dados[1] && dados[0] != 1 && dados[1] != 1){      // Si las caras son iguales entre sí y no son ases. Entonces el cerdo hizo un Oink
+                                    trufas_acumuladas += (dados[0] + dados[1]) * 2;
+                                    resultado = (dados[0] + dados[1]) * 2;
+                                    oink = true;
+                                    cout<<"OINK!!!"<<endl;
+                                    cout<<"SUMASTE: "<<resultado<<endl;
+                                    if (jugando == jugador1){
+                                        Oink1 ++;
+                                    }else{
+                                        Oink2 ++;
+                                    }
+                                }else if(dados[0] != dados[1] && (dados[0] == 1 || dados[1] == 1)){    // Si las caras son distintas entre sí y hay un as entre ellas
+                                    trufas_acumuladas = 0;
+                                    resultado = 0;
+                                    as = false;                                                        // booleano para ceder el turno
+                                    cout << "PIERDES LAS TRUFAS ACUMULADAS!" << endl;
+                                    cout << "CEDES EL TURNO" << endl;
+                                    cout<<"SUMASTE: "<< resultado <<endl;
+                                }else if(dados[0] == dados [1] && dados[0] == 1){                      // Si dos de las caras son iguales entre sí y son ases.
+                                    trufas_acumuladas = 0;
+                                    resultado = 0;
+                                    barro = true;                                                      // se hunde en el barro pasa a 3 dados
+                                    if (jugando == jugador1){
+                                        TrufasJ1 = 0;
+                                    }else TrufasJ2 = 0;
+                                    as = false;                                                       // booleando para ceder el turno
+                                    cout << jugando << " SE HUNDE EN EL BARRO!" << endl;
+                                    cout << "PIERDES TODO!" << endl;
+                                    cout << "CEDES EL TURNO" << endl;
                                 }
-                            }else if(dados[0] != dados[1] && (dados[0] == 1 || dados[1] == 1)){    // Si las caras son distintas entre sí y hay un as entre ellas
-                                trufas_acumuladas = 0;
-                                resultado = 0;
-                                continuar = false;                                                 // booleano para ceder el turno
-                                cout << "PIERDES LAS TRUFAS ACUMULADAS!" << endl;
-                                cout<<"SUMASTE: "<< resultado <<endl;
-                            }else if(dados[0] == dados [1] && dados[0] == 1){                      // Si dos de las caras son iguales entre sí y son ases.
-                                trufas_acumuladas = 0;
-                                resultado = 0;
-                                if (jugando == jugador1){
-                                    TrufasJ1 = 0;
-                                }else TrufasJ2 = 0;
-                                continuar = false;                                                 // booleando para ceder el turno
-                                cout << jugando << " SE HUNDE EN EL BARRO!" << endl;
-                                cout << "PIERDES TODO!" << endl;
+
+                            } else {                                                                  // caso si cantidad de dados son 3
+                                if (!(dados[0] == dados[1] && dados[0] == dados[2] && dados[1] == dados[2]) && (dados[0] != 1 && dados[1] !=1 && dados[2] !=1)) {      // Si las caras son distintas entre sí y ninguna de ellas es un as. Sume todos los dados en concepto de trufas y le pregunte al jugador si desea seguir lanzando.
+                                    trufas_acumuladas += (dados[0] + dados[1] + dados[2]);
+                                    resultado = (dados[0] + dados[1] + dados[2]);
+                                    cout << "SUMASTE: " << resultado << endl;
+                                } else if ((dados[0] == dados[1] && dados[0] == dados[2] && dados[1] == dados[2]) && (dados[0] != 1 && dados[1] !=1 && dados[2] !=1)) {      // Si las caras son iguales entre sí y no son ases. Entonces el cerdo hizo un Oink
+                                    trufas_acumuladas += (dados[0] + dados[1] + dados[2]) * 2;
+                                    resultado = (dados[0] + dados[1] + dados[2]) * 2;
+                                    oink = true;
+                                    cout << "OINK!!!" << endl;
+                                    cout << "SUMASTE: " << resultado << endl;
+                                    if (jugando == jugador1) {
+                                        Oink1++;
+                                    } else {
+                                        Oink2++;
+                                    }
+                                } else {
+                                    int cont = 0;                                                          // contador para contar los unos
+                                    for (int k = 0; k < cantidad; ++k) {                                   // for para contar los unos en la tirada
+                                        if (dados[k] == 1){
+                                            cont++;
+                                        }
+                                    }
+                                    if (cont == 1) {                                                       // Si las caras son distintas entre sí y hay un as entre ellas
+                                        trufas_acumuladas = 0;
+                                        resultado = 0;
+                                        as = false;                                                        // booleano para ceder el turno
+                                        cout << "PIERDES LAS TRUFAS ACUMULADAS!" << endl;
+                                        cout << "CEDES EL TURNO" << endl;
+                                        cout << "SUMASTE: " << resultado << endl;
+                                    }
+                                    if (cont == 2) {                                                      // Si dos de las caras son iguales entre sí y son ases.
+                                        trufas_acumuladas = 0;
+                                        if (jugando == jugador1) {
+                                            TrufasJ1 = 0;
+                                        } else TrufasJ2 = 0;
+                                        as = false;                                                       // booleando para ceder el turno
+                                        cout << jugando << " SE HUNDE EN EL BARRO!" << endl;
+                                        cout << "PIERDES TODO!" << endl;
+                                        cout << "CEDES EL TURNO" << endl;
+                                    }
+                                    if (cont == 3){                                                       // Si se está lanzando con tres dados y tres de las caras son iguales entre sí y son ases
+                                        if (jugando == jugador1) {
+                                            TrufasJ2 += TrufasJ1;
+                                            TrufasJ1 = 0;
+                                            trufas_acumuladas = 0;
+                                        } else{
+                                            TrufasJ1 += TrufasJ2;
+                                            TrufasJ2 = 0;
+                                            trufas_acumuladas = 0;
+                                        }
+                                        cout << jugando << " SE HUNDE EN EL BARRO!" << endl;
+                                        cout << "TU OPONENTE ROBA TUS TRUFAS, PIERDES TODO!" << endl;
+                                        cout << "CEDES EL TURNO" << endl;
+                                    }
+                                    as = false;
+                                }
                             }
-                        } while (consulta() && continuar);
-                        if (jugando == jugador1){                                                  // asignacion de trufas y lanzamientos a jugador correspondiente
+                        } while ((consulta() && as) || (oink));
+                        if (jugando == jugador1){                                                 // asignacion de trufas y lanzamientos a jugador correspondiente
                             TrufasJ1 += trufas_acumuladas;
                             if (lanzamientos > lanzamientosJ1){
                                 lanzamientosJ1 = lanzamientos;
@@ -119,6 +193,12 @@ int main(){
                         if (jugando == jugador1){                                                 // cambio de jugador
                             jugando = jugador2;
                         }else jugando = jugador1;
+                        if (TrufasJ1 > 50 && TrufasJ2 > 50){                                     // condicion para cambiar cantidad
+                            cincunta_trufas = true;
+                        }
+                        if (cincunta_trufas || barro){                                           // condicion si ambos jugadores pasan las 50 trufas o alguno se hunde en el barro
+                            cantidad = 3;
+                        }
                     }
                 }
 
@@ -194,6 +274,26 @@ int main(){
                         cout << "GANADOR " << jugador2 << " con " << total2 << " puntos de victoria!" << endl << endl;
                     }
                 }
+                /* mayor puntaje con su jugador para las estadisticas */
+                if (cantidad_record == 0){
+                    if (total1 > total2){
+                        cantidad_record = total1;
+                        jugador_record = jugador1;
+                    } else if (total2 > total1){
+                        cantidad_record = total2;
+                        jugador_record = jugador2;
+                    }
+                } else if (total1 > total2){
+                    if (total1 > cantidad_record){
+                        cantidad_record = total1;
+                        jugador_record = jugador1;
+                    }
+                } else if (total2 > total1){
+                    if (total2 > cantidad_record){
+                        cantidad_record = total2;
+                        jugador_record = jugador2;
+                    }
+                }
                 cin.ignore();
                 do {                                                   // while para continuar
                     cout << "Escriba Oink para continuar:";
@@ -202,12 +302,40 @@ int main(){
                         continuar[i] = toupper(continuar[i]);
                     }
                 } while (continuar != "OINK");
+
+                /* reincio de variables */
+                TrufasJ1 = 0;
+                TrufasJ2 = 0;
+                lanzamientosJ1 = 0;
+                lanzamientosJ2 = 0;
+                trufas_acumuladas = 0;
+                total1 = 0;
+                total2 = 0;
+                PuntosJ2 = 0;
+                PuntosJ1 = 0;
+                Cada50J1 = 0;
+                Cada50J2 = 0;
+                codicia1 = 0;
+                codicia2 = 0;
+                cincunta_trufas = false;
+                barro = false;
                 break;
 
                 //------------------------------------------------------------------------------
                 // estadisticas
             case 2:
-
+                if (cantidad_record == 0){
+                    cout << "AUN NO HAY RECORD REGISTRADO" << endl;
+                    cout << "---------------------------------------------------------------------------------------" << endl;
+                } else {
+                    cout << "MAYOR PUNTAJE " << jugador_record << " CON " << cantidad_record << " PUNTOS." << endl;
+                }
+                do {                                                   // while para continuar
+                    cout << "Escriba S para continuar:";
+                    cin >> continuar;
+                    continuar[0] = toupper(continuar[0]);
+                } while (continuar != "S");
+                cout << "---------------------------------------------------------------------------------------" << endl;
                 break;
 
                 //------------------------------------------------------------------------------
@@ -229,7 +357,7 @@ int main(){
                     cout << "Escriba S para continuar:";
                     cin >> continuar;
                     continuar[0] = toupper(continuar[0]);
-                } while (continuar != "s");
+                } while (continuar != "S");
                 cout << "---------------------------------------------------------------------------------------" << endl;
                 break;
 

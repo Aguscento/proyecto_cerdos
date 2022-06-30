@@ -12,7 +12,7 @@ void juego(string jugador1, string jugador2, int trufasj1, int trufasj2, string 
     cout << endl << "TURNO DE " << turno_de << endl;
     cout << "+------------------------+" << endl;
     cout << "| RONDAS #" << i << "              |" << endl;
-    cout << "| TRUFAS DE LA RONDA:" << trufas << "    |" << endl;
+    cout << "| TRUFAS DE LA RONDA:" << trufas << "   |" << endl;
     cout << "| lANZAMIENTOS: " << lanzamientos << "        |" << endl;
     cout << "+------------------------+" << endl;
 }
@@ -81,17 +81,42 @@ void definir_comienzo(int vec[], int cantidad,int vec2[],int cant, string &jugan
             if(mayor1 > mayor2) {
                 cout << "Felicitaciones Comienza el jugador #1: " << jugador1 << endl;
                 jugando = jugador1;
-            }
-            if(mayor2 > mayor1){
+            } else if(mayor2 > mayor1){
                 cout<<"Felicitaciones Comienza el jugador #2: " << jugador2 << endl;
                 jugando = jugador2;
-            }else if(vec[0] == vec2[0] && vec[0] == vec2[1]){
-                    cout<<"Empate absoluto, hay que tirar de nuevo"<<endl;
-                    tirarDados(vec, cantidad);
-                    tirarDados(vec2,cant);
-                    definir_comienzo(vec, cantidad, vec2, cant, jugando, jugador1, jugador2);
-                }
+            }else{
+                cout<<"Empate absoluto, hay que tirar de nuevo"<<endl;
+                tirarDados(vec, cantidad);
+                tirarDados(vec2,cant);
+                definir_comienzo(vec, cantidad, vec2, cant, jugando, jugador1, jugador2);
+            }
 
         }
 
+}
+
+void imprimir_dados(int dados_que_salieron[], int cant) {
+    string dados[7] = { "", "+-------+\n|       |\n|   x   |\n|       |\n+-------+\n",
+                        "+-------+\n| x     |\n|       |\n|     x |\n+-------+\n",
+                        "+-------+\n| x     |\n|   x   |\n|     x |\n+-------+\n",
+                        "+-------+\n| x   x |\n|       |\n| x   x |\n+-------+\n",
+                        "+-------+\n| x   x |\n|   x   |\n| x   x |\n+-------+\n",
+                        "+-------+\n| x   x |\n| x   x |\n| x   x |\n+-------+\n"
+    };
+    string str_1, str_2, str_3, str_res;
+    string arr_str[3];
+    for( int i = 0; i < cant; ++i ) {
+        arr_str[i] = dados_que_salieron[i];
+    }
+    for( int j=0; j < dados[1].size(); j++ ) {
+        if (dados[1][j] == '\n') {
+            str_res += str_1 + " " + str_2 + " " + str_3 + "\n";
+            str_1 = str_2 = str_3 = "";
+        } else {
+            str_1 += dados[dados_que_salieron[0]][j];
+            str_2 += dados[dados_que_salieron[1]][j];
+            if (cant == 3) str_3 += dados[dados_que_salieron[2]][j];
+        }
+    }
+    cout << str_res << endl;
 }
