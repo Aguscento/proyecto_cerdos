@@ -63,37 +63,45 @@ void definir_comienzo(int vec[], int cantidad,int vec2[],int cant, string &jugan
     int suma = vec[0]+vec[1];
     int suma2 = vec2[0]+vec2[1];                                    // sumatoria de caras
     int mayor1, mayor2;
+    string continuar;
     if(suma > suma2){
         cout<<"Felicitaciones Comienza el jugador #1: " << jugador1 << endl;         // comparacion de resultados
         jugando = jugador1;
     }else if(suma2 > suma){
         cout<<"Felicitaciones Comienza el jugador #2: " << jugador2 << endl;
         jugando = jugador2;
-        }else if(suma==suma2){                                      // comparacion de numero mayor en caso de empate
-            mayor1 = vec[0];
-            if (vec[1] > mayor1) {
-                mayor1 = vec[1];
+        }else{
+            if(suma==suma2){                                      // comparacion de numero mayor en caso de empate
+                if (vec[0]>vec[1]){                            // busco el mayor de vec, en caso de ser iguales se escoge cualquiera
+                    mayor1 = vec[0];
+                } else{
+                    if (vec[1]>=vec[0]){
+                        mayor1 = vec[1];
+                    }
+                }
+                if (vec2[0]>vec2[1]){                          // busco el mayor de vec2
+                    mayor2 = vec2[0];
+                } else{
+                    if (vec2[1]>=vec2[0]){
+                        mayor2 = vec2[1];
+                    }
+                }
+                if (mayor1>mayor2){                                                     // comparo los mayores
+                    cout<<"Felicitaciones Comienza el jugador #1: " << jugador1 << endl;
+                    jugando = jugador1;
+                }
+                if (mayor2>mayor1){
+                    cout<<"Felicitaciones Comienza el jugador #2: " << jugador2 << endl;
+                    jugando = jugador2;
+                }
+                if (mayor2==mayor1){
+                    cout << "EMPATE ABSOLUTO, HAY QUE TIRAR DE NUEVO" << endl;
+                    jugando = "EMPATE";
+                }
             }
-            mayor2 = vec2[0];
-            if (vec2[1] > mayor2) {
-                mayor2 = vec2[1];
-            }
-            if(mayor1 > mayor2) {
-                cout << "Felicitaciones Comienza el jugador #1: " << jugador1 << endl;
-                jugando = jugador1;
-            } else if(mayor2 > mayor1){
-                cout<<"Felicitaciones Comienza el jugador #2: " << jugador2 << endl;
-                jugando = jugador2;
-            }else{
-                cout<<"Empate absoluto, hay que tirar de nuevo"<<endl;
-                tirarDados(vec, cantidad);
-                tirarDados(vec2,cant);
-                definir_comienzo(vec, cantidad, vec2, cant, jugando, jugador1, jugador2);
-            }
-
         }
-
 }
+
 
 void imprimir_dados(int dados_que_salieron[], int cant) {
     string dados[7] = { "", "+-------+\n|       |\n|   x   |\n|       |\n+-------+\n",
@@ -104,10 +112,6 @@ void imprimir_dados(int dados_que_salieron[], int cant) {
                         "+-------+\n| x   x |\n| x   x |\n| x   x |\n+-------+\n"
     };
     string str_1, str_2, str_3, str_res;
-    string arr_str[3];
-    for( int i = 0; i < cant; ++i ) {
-        arr_str[i] = dados_que_salieron[i];
-    }
     for( int j=0; j < dados[1].size(); j++ ) {
         if (dados[1][j] == '\n') {
             str_res += str_1 + " " + str_2 + " " + str_3 + "\n";
@@ -115,7 +119,9 @@ void imprimir_dados(int dados_que_salieron[], int cant) {
         } else {
             str_1 += dados[dados_que_salieron[0]][j];
             str_2 += dados[dados_que_salieron[1]][j];
-            if (cant == 3) str_3 += dados[dados_que_salieron[2]][j];
+            if (cant == 3){
+                str_3 += dados[dados_que_salieron[2]][j];
+            }
         }
     }
     cout << str_res << endl;

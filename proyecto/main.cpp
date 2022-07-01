@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
     string jugador1, jugador2;                             // strings para solicitar nombres de jugadores
-    int TrufasJ1 = 49, TrufasJ2 = 49, lanzamientos;          // contador de trufas y lanzamientos
+    int TrufasJ1 = 0, TrufasJ2 = 0, lanzamientos;          // contador de trufas y lanzamientos
     int lanzamientosJ1 = 0, lanzamientosJ2 = 0;            // contador de lanzamientos
     string jugando;                                        // variable para el jugador del turno
     string continuar;                                      // string para continuar
@@ -49,19 +49,21 @@ int main(){
                 //---------------------------------------------------------------------
                 /* definicion de comienzo */
                 cantidad = 2;                                          // cantidad de dados a usar
-                cout << "DADOS DE JUGADOR #1:" << endl;
-                tirarDados(dados, cantidad);
-                for (int i = 0; i < 2; ++i) {
-                    cout <<dados[i]<<endl;
-                }
-                imprimir_dados(dados, cantidad);
-                cout << "DADOS DE JUGADOR #2:" << endl;
-                tirarDados(dados2,cantidad);
-                for (int i = 0; i < 2; ++i) {
-                    cout <<dados2[i]<<endl;
-                }
-                imprimir_dados(dados2, cantidad);
-                definir_comienzo(dados,cantidad,dados2,cantidad, jugando, jugador1, jugador2);
+
+                do {
+                    cout << "DADOS DE JUGADOR #1:" << endl;
+                    tirarDados(dados, cantidad);
+                    imprimir_dados(dados, cantidad);
+                    cout << "DADOS DE JUGADOR #2:" << endl;
+                    tirarDados(dados, cantidad);
+                    imprimir_dados(dados2, cantidad);
+                    definir_comienzo(dados, cantidad, dados2, cantidad, jugando, jugador1, jugador2);
+                    do {                                                   // while para continuar
+                        cout << "Escriba S para continuar:";
+                        cin >> continuar;
+                        continuar[0] = toupper(continuar[0]);
+                    } while (continuar != "S");
+                } while (jugando == "EMPATE");
                 do {                                                   // while para continuar
                     cout << "Escriba S para continuar:";
                     cin >> continuar;
@@ -80,9 +82,6 @@ int main(){
                             juego(jugador1, jugador2, TrufasJ1, TrufasJ2, jugando, i, lanzamientos, trufas_acumuladas); // turno de jugador
                             tirarDados(dados, cantidad);
                             imprimir_dados(dados, cantidad);
-                            for (int k = 0; k < cantidad; ++k) {
-                                cout << dados[k] << endl;
-                            }
                             if (cantidad == 2){                                                        // caso si la cantidad de dados es 2
                                 if(dados[0] != dados[1] && dados[0] !=1 && dados[1]!=1){               // Si las caras son distintas entre sí y ninguna de ellas es un as
                                     trufas_acumuladas += (dados[0]+ dados[1]);
