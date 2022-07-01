@@ -25,7 +25,7 @@ int main(){
     int dados2[objetos]={};                                // vecrores de dados
     int resultado;                                         // donde se suman los puntos de las condiciones
     bool cincunta_trufas = false, barro = false;           // booleanos para cambiar cantidad de dados
-    bool oink;
+    bool oink;                                             // booleando para volver a lanzar cuando hace oink
     srand(time(NULL));                          // seteo del rand
 
     while (salir == "N") {
@@ -55,7 +55,7 @@ int main(){
                     tirarDados(dados, cantidad);
                     imprimir_dados(dados, cantidad);
                     cout << "DADOS DE JUGADOR #2:" << endl;
-                    tirarDados(dados, cantidad);
+                    tirarDados(dados2, cantidad);
                     imprimir_dados(dados2, cantidad);
                     definir_comienzo(dados, dados2, jugando, jugador1, jugador2);
                     do {                                                   // while para continuar
@@ -64,11 +64,7 @@ int main(){
                         continuar[0] = toupper(continuar[0]);
                     } while (continuar != "S");
                 } while (jugando == "EMPATE");
-                do {                                                   // while para continuar
-                    cout << "Escriba S para continuar:";
-                    cin >> continuar;
-                    continuar[0] = toupper(continuar[0]);
-                } while (continuar != "S");
+
                 //----------------------------------------------------------------------
 
                 /* sistema de turnos y lanzadas */
@@ -92,6 +88,7 @@ int main(){
                                     resultado = (dados[0] + dados[1]) * 2;
                                     oink = true;
                                     cout<<"OINK!!!"<<endl;
+                                    cout << "VUELVES A LANZAR" << endl;
                                     cout<<"SUMASTE: "<<resultado<<endl;
                                     if (jugando == jugador1){
                                         Oink1 ++;
