@@ -59,7 +59,7 @@ void tirarDados(int dados[],int cantidad){
     }
 }
 
-void definir_comienzo(int vec[], int cantidad,int vec2[],int cant, string &jugando, string jugador1, string jugador2){ // jugando es pasado por referencia para asignarle a la varible "jugando" el jugador ganador del comienzo
+void definir_comienzo(int vec[], int vec2[], string &jugando, string jugador1, string jugador2){ // jugando es pasado por referencia para asignarle a la varible "jugando" el jugador ganador del comienzo
     int suma = vec[0]+vec[1];
     int suma2 = vec2[0]+vec2[1];                                    // sumatoria de caras
     int mayor1, mayor2;

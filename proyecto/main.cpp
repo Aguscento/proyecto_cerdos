@@ -57,7 +57,7 @@ int main(){
                     cout << "DADOS DE JUGADOR #2:" << endl;
                     tirarDados(dados, cantidad);
                     imprimir_dados(dados2, cantidad);
-                    definir_comienzo(dados, cantidad, dados2, cantidad, jugando, jugador1, jugador2);
+                    definir_comienzo(dados, dados2, jugando, jugador1, jugador2);
                     do {                                                   // while para continuar
                         cout << "Escriba S para continuar:";
                         cin >> continuar;
