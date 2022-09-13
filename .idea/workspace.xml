@@ -14,7 +14,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f157dce-c46d-4a7b-b459-0bdf1b03254a" name="Changes" comment="" />
+    <list default="true" id="4f157dce-c46d-4a7b-b459-0bdf1b03254a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/cmake-build-debug/CMakeFiles/proyecto.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/cmake-build-debug/CMakeFiles/proyecto.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/cmake-build-debug/proyecto.exe" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/cmake-build-debug/proyecto.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +96,10 @@
       <workItem from="1656341052441" duration="19509000" />
       <workItem from="1656595434805" duration="22960000" />
       <workItem from="1656634484699" duration="2434000" />
-      <workItem from="1656683542882" duration="4101000" />
+      <workItem from="1656683542882" duration="4137000" />
+      <workItem from="1656710133032" duration="8498000" />
+      <workItem from="1656724878102" duration="163000" />
+      <workItem from="1656725053708" duration="845000" />
     </task>
     <servers />
   </component>

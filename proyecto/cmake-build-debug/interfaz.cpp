@@ -64,33 +64,33 @@ void definir_comienzo(int vec[], int vec2[], string &jugando, string jugador1, s
     int suma2 = vec2[0]+vec2[1];                                    // sumatoria de caras
     int mayor1, mayor2;
     string continuar;
-    if(suma < suma2){
+    if(suma > suma2){
         cout<<"Felicitaciones Comienza el jugador #1: " << jugador1 << endl;         // comparacion de resultados
         jugando = jugador1;
-    }else if(suma2 < suma){
+    }else if(suma2 > suma){
         cout<<"Felicitaciones Comienza el jugador #2: " << jugador2 << endl;
         jugando = jugador2;
         }else{
             if(suma==suma2){                                      // comparacion de numero mayor en caso de empate
-                if (vec[0]<vec[1]){                            // busco el mayor de vec, en caso de ser iguales se escoge cualquiera
+                if (vec[0]>vec[1]){                            // busco el mayor de vec, en caso de ser iguales se escoge cualquiera
                     mayor1 = vec[0];
                 } else{
-                    if (vec[1]<=vec[0]){
+                    if (vec[1]>=vec[0]){
                         mayor1 = vec[1];
                     }
                 }
-                if (vec2[0]<vec2[1]){                          // busco el mayor de vec2
+                if (vec2[0]>vec2[1]){                          // busco el mayor de vec2
                     mayor2 = vec2[0];
                 } else{
-                    if (vec2[1]<=vec2[0]){
+                    if (vec2[1]>=vec2[0]){
                         mayor2 = vec2[1];
                     }
                 }
-                if (mayor1<mayor2){                                                     // comparo los mayores
+                if (mayor1>mayor2){                                                     // comparo los mayores
                     cout<<"Felicitaciones Comienza el jugador #1: " << jugador1 << endl;
                     jugando = jugador1;
                 }
-                if (mayor2<mayor1){
+                if (mayor2>mayor1){
                     cout<<"Felicitaciones Comienza el jugador #2: " << jugador2 << endl;
                     jugando = jugador2;
                 }
